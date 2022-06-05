@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://cdn2.iconfinder.com/data/icons/font-awesome/1792/code-512.png" type="image/x-icon">
+    <title>CodeEditor</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+        .container {
+            display: flex;
+            flex-direction: row;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        #output {
+            height: 400px;
+        }
+
+        .header-h1 {
+         
+            margin: 0%;
+            text-align: center;
+            background-color: grey;
+        }
+
+        .codeArea {
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            background-color: #1d1e22;
+            resize: none;
+            color: white;
+        }
+        .Code-box h1{
+          margin: 0%;
+        }
+        .area-css{
+            color: #99e1ff;
+        }
+        .area-js{
+            color: #fffd99;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header-h1">
+
+        <h1>CODE EDITER</h1>
+    </div>
+    <div class="container">
+        <div class="Code-box">
+            <h1>HTML</h1>
+            <textarea name="html" spellcheck="false" id="htmlcode" cols="54" rows="20" class="codeArea area-html">   </textarea>
+        </div>
+        <div class="Code-box ">
+            <h1>CSS</h1>
+            <textarea name="html" spellcheck="false" id="cssCode" cols="54" rows="20" class="codeArea area-css"></textarea>
+        </div>
+        <div class="Code-box box-">
+            <h1>JS</h1>
+            <textarea name="html" spellcheck="false" id="jsCode" cols="53" rows="20" class="codeArea area-js"></textarea>
+        </div>
+
+    </div>
+    <iframe id="output" width="100%"></iframe>
+
+</body>
+<script>
+    function run() {
+
+        var html = document.getElementById('htmlcode').value;
+        var css = "<style>" + document.getElementById('cssCode').value + "</style>";
+        var js = document.getElementById('jsCode').value;
+        var output = document.getElementById('output');
+        // console.log(html,css,js)
+        output.contentDocument.body.innerHTML = html + css;
+        output.contentWindow.eval(js)
+
+    }
+    document.getElementById('htmlcode').onkeyup = function () {
+        run();
+    }
+    document.getElementById('cssCode').onkeyup = function () {
+        run();
+    }
+
+</script>
+
+</html>
